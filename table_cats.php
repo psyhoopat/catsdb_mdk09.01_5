@@ -24,19 +24,26 @@ $result = get_info_cat();
         <table border="1" cellpadding="3" width="1280px" align="center" style="margin-top: 30px;">
             <thead>
                 <tr>
-                    <?php while ($row = $result->fetch_field()): ?>
-                        <th><?= $row->name ?></th>
-                    <?php endwhile; ?>
+                    <th>id</th>
+                    <th>Пол</th>
+                    <th>Порода</th>
+                    <th>Местонахождения</th>
+                    <th>Дата местонахождения</th>
+                    <th>Возраст</th>
+                    <th>Описание</th>
+                    <th>Контакты</th>
+                    <th>Координаты нашедшего</th>
+                    <th>Доп. информация</th>
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row = $result->fetch_row()): ?>
-                    <tr>
-                        <?php foreach ($row as $key => $value): ?>
-                            <td><?= $value ?></td>
-                        <?php endforeach; ?>
-                    </tr>
-                <?php endwhile; ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <tr>
+                    <?php foreach($row as $key => $value): ?>
+                        <td><?= $value ?></td>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endwhile; ?>
             </tbody>
         </table>
     <?php elseif ($result->num_rows == 0): ?>

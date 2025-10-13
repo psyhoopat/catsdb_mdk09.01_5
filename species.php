@@ -21,7 +21,7 @@ $result = get_species_cat();
 <main>
     <div>
         <?php if ($result->num_rows > 0): ?>
-            <table border="1" width="100%">
+            <table border="1" width="100%" cellpadding="10px">
                 <thead>
                 <tr>
                     <th width="20%">Вид породы</th>
@@ -32,9 +32,11 @@ $result = get_species_cat();
                 <tbody>
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?= $row['name']?></td>
-                        <td><?= $row['description']?></td>
-                        <td><img src="<?= $row['img']?>" alt="img"></td>
+                        <td align="center" style="vertical-align: top;"><?= $row['name']?></td>
+                        <td align="left" style="vertical-align: top;"><?= $row['description']?></td>
+                        <td>
+                            <img width="100%" style="object-fit: cover;" src="<?= $row['img']?>" alt="img">
+                        </td>
                     </tr>
                 <?php endwhile; ?>
                 </tbody>

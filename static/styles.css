@@ -83,3 +83,24 @@ form button:last-child {
     background-color: #bababa;
     color: white;
 }
+
+.success,
+.error {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    font-size: 26px;
+    padding: 30px;
+    text-align: center;
+}
+
+.success {
+    border: 1px solid green;
+    color: green;
+}
+
+.error {
+    border: 1px solid red;
+    color: red;
+}
+

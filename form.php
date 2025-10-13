@@ -18,6 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST["description"];
     $info = $_POST["info"];
 
+    if ($id_species == "") {
+        $_SESSION['error'] = "Species name is required";
+        header("Location: $url");
+        exit;
+    }
+
     create_post_cat($gender, $place, $date, $age, $description, $contact, $coordinates, $info, $id_species);
     $_SESSION['success'] = 'Успешно!';
 
@@ -41,26 +47,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include_once("templates/header.php"); ?>
 <main>
 
-    <div class="error">
-        <?php echo !empty($_SESSION['error']) ? $_SESSION['error'] : '';?>
-    </div>
-    <div class="success">
-        <?php echo !empty($_SESSION['success']) ? $_SESSION['success'] : ''; ?>
-    </div>
+    <?php echo !empty($_SESSION['error']) ? "<div class='error'>".$_SESSION['error']."</div>" : ''; ?>
+    <?php echo !empty($_SESSION['success']) ? "<div class='success'>".$_SESSION['success']."</div>" : ''; ?>
+
     <form action="<?= $url ?>" method="POST">
         <h1>Форма добавления</h1>
         <div class="form-row-radio">
             <label for="man">Кот</label>
-            <input id="man" class="right-radio" name="gender" type="radio" value="Кот">
+            <input id="man" class="right-radio" name="gender" type="radio" value="Кот" required>
         </div>
         <div class="form-row-radio">
             <label for="women">Кошка</label>
-            <input id="women" class="right-radio" name="gender" type="radio" value="Кошка">
+            <input id="women" class="right-radio" name="gender" type="radio" value="Кошка" required>
         </div>
         <div>
-            <label for="species">Вид породы</label>
-            <select class="input" name="specie" id="species">
-                <option value="">--select--</option>
+            <label for="species" <?= !empty($_SESSION['error']) ? "style='color:red;'" : '' ?> >Вид породы</label>
+            <select class="input" name="specie" id="species" <?= !empty($_SESSION['error']) ? "style='border-color:red;'" : '' ?> >
+                <option value="" >--select--</option>
                 <?php foreach ($result as $row): ?>
                     <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
                 <?php endforeach; ?>

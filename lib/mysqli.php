@@ -40,7 +40,19 @@ function get_info_cat() {
     try {
         $mysql = db_connect();
 
-        $sql = "SELECT * FROM info_cat";
+        $sql = "SELECT table1.id, 
+                       gender,
+                       table2.name,
+                       place,
+                       `date`,
+                       age,
+                       table1.description,
+                       contact,
+                       coordinates,
+                       info
+                FROM info_cat AS table1 
+                JOIN species_cat AS table2 
+                ON table1.id_species = table2.id";
         $result = $mysql->query($sql);
 
         $mysql->close();

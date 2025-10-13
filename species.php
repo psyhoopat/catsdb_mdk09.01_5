@@ -24,9 +24,9 @@ $result = get_species_cat();
             <table border="1" width="100%">
                 <thead>
                 <tr>
-                    <th>Вид породы</th>
-                    <th>Описание</th>
-                    <th>Фото</th>
+                    <th width="20%">Вид породы</th>
+                    <th width="40%">Описание</th>
+                    <th width="50%">Фото</th>
                 </tr>
                 </thead>
                 <tbody>

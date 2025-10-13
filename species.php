@@ -20,15 +20,16 @@ $result = get_species_cat();
 <?php include_once("templates/header.php"); ?>
 <main>
     <div>
-        <table border="1" width="100%">
-            <thead>
+        <?php if ($result->num_rows > 0): ?>
+            <table border="1" width="100%">
+                <thead>
                 <tr>
                     <th>Вид породы</th>
                     <th>Описание</th>
                     <th>Фото</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
                         <td><?= $row['name']?></td>
@@ -36,8 +37,11 @@ $result = get_species_cat();
                         <td><img src="<?= $row['img']?>" alt="img"></td>
                     </tr>
                 <?php endwhile; ?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        <?php elseif ($result->num_rows == 0): ?>
+            <h1>Данные отсуствуют</h1>
+        <?php endif; ?>
     </div>
 </main>
 </body>

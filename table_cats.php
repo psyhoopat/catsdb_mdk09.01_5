@@ -39,8 +39,7 @@ $result = get_info_cat();
                 <?php endwhile; ?>
             </tbody>
         </table>
-    <?php endif; ?>
-    <?php if ($result->num_rows == 0): ?>
+    <?php elseif ($result->num_rows == 0): ?>
         <div>
             <h1>Таблица пуста</h1>
         </div>

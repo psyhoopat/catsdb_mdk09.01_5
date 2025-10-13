@@ -52,13 +52,14 @@ function get_info_cat() {
     }
 }
 
-function create_post_cat($gender, $place, $age, $description, $contact, $coordinates, $info, $id_species) {
+function create_post_cat($gender, $place, $date, $age, $description, $contact, $coordinates, $info, $id_species) {
     try {
         $mysqli = db_connect();
 
         $sql = "INSERT INTO info_cat (
                       gender, 
                       place,
+                      date,
                       age,
                       description,
                       contact,
@@ -68,6 +69,7 @@ function create_post_cat($gender, $place, $age, $description, $contact, $coordin
                   ) VALUES (
                         '$gender',
                         '$place',
+                        '$date',  
                         '$age',
                         '$description',
                         '$contact',

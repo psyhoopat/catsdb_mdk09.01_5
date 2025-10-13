@@ -9,6 +9,7 @@ $result = get_species_cat();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gender = $_POST["gender"];
+    $date = $_POST["date"];
     $id_species = $_POST["specie"];
     $place = $_POST["place"];
     $age = $_POST["age"];
@@ -17,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST["description"];
     $info = $_POST["info"];
 
-    create_post_cat($gender, $place, $age, $description, $contact, $coordinates, $info, $id_species);
+    create_post_cat($gender, $place, $date, $age, $description, $contact, $coordinates, $info, $id_species);
     $_SESSION['success'] = 'Успешно!';
 
     header("Location: $url");
@@ -66,11 +67,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
         <div>
-            <label for="place">Местоположение</label>
+            <label for="date">Дата нахождения</label>
+            <input id="date" class="input" name="date" type="date" placeholder="Дата" required/>
+        </div>
+        <div>
+            <label for="place">Наденое местоположение</label>
             <input id="place" class="input" name="place" type="text" placeholder="Местоположение" required/>
         </div>
         <div>
-            <label for="place">Координаты</label>
+            <label for="place">Координаты нашедшего</label>
             <input id="place" class="input" name="coordinates" type="text" placeholder="Координаты" required/>
         </div>
         <div>

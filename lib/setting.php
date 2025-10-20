@@ -2,4 +2,4 @@
 
 session_start();
 
-$_SESSION['server_url'] = "/cats_formsdb_php/";
+$_SESSION['server_url'] = "/catsdb_mdk09.01_5/";
